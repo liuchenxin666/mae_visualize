@@ -26,7 +26,7 @@ def prepare_model(chkpt_dir, arch='mae_vit_large_patch16'):
     model = getattr(model_visualize, arch)()
     # load model
     checkpoint = torch.load(chkpt_dir, map_location='cpu')
-    msg = model.load_state_dict(checkpoint, strict=False)
+    msg = model.load_state_dict(checkpoint['model'], strict=False)
     print(msg)
     return model
 
